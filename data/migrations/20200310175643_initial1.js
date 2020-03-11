@@ -14,6 +14,9 @@ exports.up = async function(knex) {
     table.increments("id")
     table.text("name").notNull()
     table.text("description")
+    table.integer("project_id").notNull().unsigned().references("id").inTable("projects")
+    .onUpdate("CASCADE")
+    .onDelete("CASCADE")
   })
 
   //TASKS TABLE
